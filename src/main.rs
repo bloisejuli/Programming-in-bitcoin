@@ -1,8 +1,1 @@
-pub mod campos_finitos;
-
-fn main() {
-    
-}
-
-
-
+fn main() {}
