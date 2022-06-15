@@ -58,7 +58,7 @@ impl Div for FieldElement {
 
     fn div(self, other: FieldElement) -> Self::Output {
         assert_eq!(self.prime, other.prime);
-        assert_eq!(other.prime, 0);
+        assert_ne!(other.prime, 0);
 
         FieldElement {
             num: (self.num * modular_pow(other.num, self.prime -2, self.prime)).rem_euclid(self.prime),
