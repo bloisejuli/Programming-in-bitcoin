@@ -1,1 +1,1 @@
-pub mod elliptic_curves;
+pub mod point;
