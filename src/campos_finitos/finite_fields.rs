@@ -78,7 +78,7 @@ impl Div for FieldElement {
 }
 
 impl FieldElement {
-    fn new(num: i32, prime: i32) -> Result<FieldElement, CreationError> {
+    pub fn new(num: i32, prime: i32) -> Result<FieldElement, CreationError> {
         if num >= prime {
             return Err(CreationError::NumberGreaterPrime);
         } else if num < 0 {
@@ -88,11 +88,11 @@ impl FieldElement {
         }
     }
 
-    fn repr() -> String {
+    pub fn repr() -> String {
         return "FieldElement_{}({})".to_string();
     }
 
-    fn equal(&self, other: &FieldElement) -> bool {
+    pub fn equal(&self, other: &FieldElement) -> bool {
         if self.num == other.num && self.prime == other.prime {
             return true;
         } else {
@@ -100,11 +100,11 @@ impl FieldElement {
         }
     }
 
-    fn not_equal(&self, other: &FieldElement) -> bool {
+    pub fn not_equal(&self, other: &FieldElement) -> bool {
         return self.num != other.num || self.prime != other.prime;
     }
 
-    fn pow(&self, exponent: i32) -> FieldElement {
+    pub fn pow(&self, exponent: i32) -> FieldElement {
         let n: i32 = exponent.rem_euclid((self.prime - 1) as i32);
         let number = modular_pow(self.num, n, self.prime);
         return FieldElement {
